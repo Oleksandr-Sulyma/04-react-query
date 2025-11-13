@@ -8,7 +8,7 @@
 
 ## 🚀 Демо
 
-🔗 **Live Demo:** [https://03-react-movies-yjo9.vercel.app/](https://03-react-movies-yjo9.vercel.app/)
+🔗 **Live Demo:** [https://04-react-query-676rsqgce-3280673s-projects.vercel.app/](https://04-react-query-676rsqgce-3280673s-projects.vercel.app/)
 
 ---
 
