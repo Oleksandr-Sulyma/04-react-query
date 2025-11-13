@@ -8,39 +8,37 @@ import Loader from "@/components/Loader/Loader";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 
 import fetchMovies from "@/services/movieService";
-import type { Movie } from "@/types/movie";
+import type { Movie, MovieResponse } from "@/types/movie";
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 export default function App() {
-  const [movies, setMovies] = useState<Movie[]>([]);
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [page, setPage] = useState<number>(1);
-
   const [query, setQuery] = useState<string>("");
 
-  const { data, isLoading, isSuccess, isError } = useQuery({
+  const { data, isSuccess, isLoading, isError } = useQuery<
+    MovieResponse,
+    Error
+  >({
     queryKey: ["movies", query, page],
     queryFn: () => fetchMovies(query, page),
     enabled: query !== "",
     placeholderData: keepPreviousData,
+    staleTime: 1000 * 60 * 3,
   });
+
+  useEffect(() => {
+    if (isSuccess && data?.results?.length === 0) {
+      toast.error("No movies found for your request.");
+    }
+  }, [isSuccess, data]);
 
   const handleSearch = (query: string) => {
     setQuery(query);
     setPage(1);
   };
-
-  useEffect(() => {
-    if (data) {
-      setMovies(data.results);
-
-      if (data.results.length === 0) {
-        toast.error("No movies found for your request.");
-      }
-    }
-  }, [data]);
 
   return (
     <div className={css.app}>
@@ -64,8 +62,8 @@ export default function App() {
 
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      {movies.length > 0 && (
-        <MovieGrid movies={movies} onSelect={setSelectedMovie} />
+      {isSuccess && data.results.length > 0 && (
+        <MovieGrid movies={data.results} onSelect={setSelectedMovie} />
       )}
       {selectedMovie && (
         <MovieModal

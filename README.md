@@ -1,75 +1,144 @@
-# React + TypeScript + Vite
+# 🎬 React Movies App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Простий застосунок для пошуку фільмів, створений за допомогою **React + TypeScript + Vite**.
 
-Currently, two official plugins are available:
+Користувач може ввести назву фільму, отримати результати з **The Movie Database (TMDB)** API та переглянути деталі кожного фільму у модальному вікні.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Демо
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+🔗 **Live Demo:** [https://03-react-movies-yjo9.vercel.app/](https://03-react-movies-yjo9.vercel.app/)
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## 🧩 Технології
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* ⚛️ **React 18**
+* 🧠 **TypeScript**
+* ⚡ **Vite**
+* 🎨 **CSS Modules**
+* 🔥 **`react-hot-toast`** (для сповіщень)
+* ⏳ **`axios`** (для HTTP-запитів до API)
+* 📊 **@tanstack/react-query** (для управління станом даних)
+* 🎞️ **The Movie Database API (TMDB)**
+* 🌐 **modern-normalize** (уніфікація стилів у браузерах)
+* ✅ **Formik + Yup** (для валідації форм)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📂 Структура Проєкту
+```bash
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+src/
+├── components/
+│   ├── App/
+│   │   ├── App.tsx
+│   │   └── App.module.css
+│   ├── SearchBar/
+│   │   ├── SearchBar.tsx
+│   │   └── SearchBar.module.css
+│   ├── MovieGrid/
+│   │   ├── MovieGrid.tsx
+│   │   └── MovieGrid.module.css
+│   ├── MovieModal/
+│   │   ├── MovieModal.tsx
+│   │   └── MovieModal.module.css
+│   ├── Loader/
+│   │   ├── Loader.tsx
+│   │   └── Loader.module.css
+│   └── ErrorMessage/
+│       ├── ErrorMessage.tsx
+│       └── ErrorMessage.module.css
+├── services/
+│   └── movieService.ts   # Логіка запитів до TMDB
+├── types/
+│   └── movie.ts          # Загальні інтерфейси TypeScript
+├── main.tsx
+└── global.css
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Налаштування Локально
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Клонування репозиторію
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone [https://github.com/Oleksandr-Sulyma/04-react-query.git](https://github.com/Oleksandr-Sulyma/04-react-query)
+cd 04-react-query
 ```
+
+### 2. Встановлення залежностей
+
+```bash
+npm install
+```
+
+### 3. Створення `.env` файлу (Конфігурація API)
+
+У корені проєкту створіть файл `.env` і додайте свій токен доступу:
+
+VITE_TMDB_TOKEN=your_tmdb_access_token
+> 👉 **Увага:** Використовується **Bearer Token** (v4 auth), який можна знайти у вашому TMDB акаунті в розділі `Settings` → `API` → `Read Access Token`.
+
+### 4. Запуск локально
+
+```bash
+npm run dev
+```
+
+Відкрийте у браузері: `http://localhost:5173`
+
+---
+
+## 🧱 Скріпти
+
+| Команда | Опис |
+|:----------|:------|
+| `npm run dev` | Запуск у режимі розробки |
+| `npm run build` | Збірка проєкту для продакшену |
+| `npm run preview` | Локальний перегляд зібраного застосунку |
+
+---
+
+## 🧰 Використання API
+
+Дані беруться з **The Movie Database API**.
+
+Використовується ендпоінт для пошуку:
+
+GET https://api.themoviedb.org/3/search/movie
+
+**Параметри запиту:**
+
+* `query` — пошуковий запит
+* `language` — мова (за замовчуванням `en-US`)
+* `include_adult` — виключення дорослого контенту (`false`)
+* `page` — номер сторінки
+
+---
+
+## 💡 Основна Функціональність
+
+- ✅ Пошук фільмів за назвою
+- ✅ Відображення результатів у вигляді карток (MovieGrid)
+- ✅ Модальне вікно з деталями фільму (MovieModal)
+- ✅ Повідомлення про відсутність результатів (react-hot-toast)
+- ✅ Індикатори завантаження (Loader) та обробка помилок (ErrorMessage)
+- ✅ Адаптивна верстка
+- ✅ Управління станом та кешування даних через React Query
+- ✅ Типізація TypeScript (interface для пропсів, глобальні типи в types/movie.ts)
+- ✅ Валідація форми SearchBar через Formik + Yup (непустий рядок, max 20 символів, trim)
+
+---
+
+## 🧑‍💻 Автор
+
+**Олександр Сулима**
+* 🔗 GitHub Профіль: [Oleksandr-Sulyma](https://github.com/Oleksandr-Sulyma)
+
+---
+
+## 📜 Ліцензія
+
+Проєкт створений у навчальних цілях. Усі права на API належать TMDB.
+

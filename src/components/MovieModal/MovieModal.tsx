@@ -51,8 +51,8 @@ const MovieModal: React.FC<MovieModalProps> = ({
             movie.backdrop_path
               ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
               : movie.poster_path
-              ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-              : "https://placehold.co/300x450?text=No+Image"
+                ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+                : "https://placehold.co/300x450?text=No+Image"
           }
           alt={movie.title || "No image available"}
           className={css.image}
@@ -69,7 +69,7 @@ const MovieModal: React.FC<MovieModalProps> = ({
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };
 
