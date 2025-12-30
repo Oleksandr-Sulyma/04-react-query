@@ -1,144 +1,32 @@
 # 🎬 React Movies App
 
-Простий застосунок для пошуку фільмів, створений за допомогою **React + TypeScript + Vite**.
-
-Користувач може ввести назву фільму, отримати результати з **The Movie Database (TMDB)** API та переглянути деталі кожного фільму у модальному вікні.
-
----
-
-## 🚀 Демо
-
-🔗 **Live Demo:** [https://04-react-query-676rsqgce-3280673s-projects.vercel.app/](https://04-react-query-676rsqgce-3280673s-projects.vercel.app/)
+Simple movie search app built with **React + TypeScript + Vite**.  
+Users can search for movies via **TMDB API** and view details in a modal window.
 
 ---
 
-## 🧩 Технології
+## 🚀 Live Demo
 
-* ⚛️ **React 18**
-* 🧠 **TypeScript**
-* ⚡ **Vite**
-* 🎨 **CSS Modules**
-* 🔥 **`react-hot-toast`** (для сповіщень)
-* ⏳ **`axios`** (для HTTP-запитів до API)
-* 📊 **@tanstack/react-query** (для управління станом даних)
-* 🎞️ **The Movie Database API (TMDB)**
-* 🌐 **modern-normalize** (уніфікація стилів у браузерах)
-* ✅ **Formik + Yup** (для валідації форм)
+🔗 [https://04-react-query-676rsqgce-3280673s-projects.vercel.app/](https://04-react-query-676rsqgce-3280673s-projects.vercel.app/)
 
 ---
 
-## 📂 Структура Проєкту
-```bash
+## 💡 Key Features
 
-src/
-├── components/
-│   ├── App/
-│   │   ├── App.tsx
-│   │   └── App.module.css
-│   ├── SearchBar/
-│   │   ├── SearchBar.tsx
-│   │   └── SearchBar.module.css
-│   ├── MovieGrid/
-│   │   ├── MovieGrid.tsx
-│   │   └── MovieGrid.module.css
-│   ├── MovieModal/
-│   │   ├── MovieModal.tsx
-│   │   └── MovieModal.module.css
-│   ├── Loader/
-│   │   ├── Loader.tsx
-│   │   └── Loader.module.css
-│   └── ErrorMessage/
-│       ├── ErrorMessage.tsx
-│       └── ErrorMessage.module.css
-├── services/
-│   └── movieService.ts   # Логіка запитів до TMDB
-├── types/
-│   └── movie.ts          # Загальні інтерфейси TypeScript
-├── main.tsx
-└── global.css
-```
-
-## ⚙️ Налаштування Локально
-
-### 1. Клонування репозиторію
-
-```bash
-git clone [https://github.com/Oleksandr-Sulyma/04-react-query.git](https://github.com/Oleksandr-Sulyma/04-react-query)
-cd 04-react-query
-```
-
-### 2. Встановлення залежностей
-
-```bash
-npm install
-```
-
-### 3. Створення `.env` файлу (Конфігурація API)
-
-У корені проєкту створіть файл `.env` і додайте свій токен доступу:
-
-VITE_TMDB_TOKEN=your_tmdb_access_token
-> 👉 **Увага:** Використовується **Bearer Token** (v4 auth), який можна знайти у вашому TMDB акаунті в розділі `Settings` → `API` → `Read Access Token`.
-
-### 4. Запуск локально
-
-```bash
-npm run dev
-```
-
-Відкрийте у браузері: `http://localhost:5173`
+- Search movies by title  
+- Display results as cards  
+- Modal window with movie details  
+- Loading indicators & error handling  
+- Responsive layout  
 
 ---
 
-## 🧱 Скріпти
+## 🧩 Technologies
 
-| Команда | Опис |
-|:----------|:------|
-| `npm run dev` | Запуск у режимі розробки |
-| `npm run build` | Збірка проєкту для продакшену |
-| `npm run preview` | Локальний перегляд зібраного застосунку |
+React 18, TypeScript, Vite, CSS Modules, Axios, @tanstack/react-query, react-hot-toast, Formik + Yup
 
 ---
 
-## 🧰 Використання API
+## 🧑‍💻 Author
 
-Дані беруться з **The Movie Database API**.
-
-Використовується ендпоінт для пошуку:
-
-GET https://api.themoviedb.org/3/search/movie
-
-**Параметри запиту:**
-
-* `query` — пошуковий запит
-* `language` — мова (за замовчуванням `en-US`)
-* `include_adult` — виключення дорослого контенту (`false`)
-* `page` — номер сторінки
-
----
-
-## 💡 Основна Функціональність
-
-- ✅ Пошук фільмів за назвою
-- ✅ Відображення результатів у вигляді карток (MovieGrid)
-- ✅ Модальне вікно з деталями фільму (MovieModal)
-- ✅ Повідомлення про відсутність результатів (react-hot-toast)
-- ✅ Індикатори завантаження (Loader) та обробка помилок (ErrorMessage)
-- ✅ Адаптивна верстка
-- ✅ Управління станом та кешування даних через React Query
-- ✅ Типізація TypeScript (interface для пропсів, глобальні типи в types/movie.ts)
-- ✅ Валідація форми SearchBar через Formik + Yup (непустий рядок, max 20 символів, trim)
-
----
-
-## 🧑‍💻 Автор
-
-**Олександр Сулима**
-* 🔗 GitHub Профіль: [Oleksandr-Sulyma](https://github.com/Oleksandr-Sulyma)
-
----
-
-## 📜 Ліцензія
-
-Проєкт створений у навчальних цілях. Усі права на API належать TMDB.
-
+**Oleksandr Sulyma** – 🔗 [GitHub](https://github.com/Oleksandr-Sulyma)
